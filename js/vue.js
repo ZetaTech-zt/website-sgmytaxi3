@@ -19,7 +19,7 @@ new Vue({
     created() {
         this.url = this.getUrl();
     },
-    // 开始执行代码前，第一个执行就是 mounted
+    // start from here mounted
     mounted() {
         const sheetId = '1AV7ShrNFFoXcVRRT8e_1HKSQcEQza9Ij9L88MADwlMo';
         const getData = async (sheetId, tabName) => {
@@ -54,55 +54,8 @@ new Vue({
         }).catch((error) => {
             console.error("An error occurred:", error);
         });
-         //get data
-         getData(sheetId, "services").then((data) => {
-            this.services = sheetTransformer(data.table.cols, data.table.rows);
-        }).catch((error) => {
-            console.error("An error occurred:", error);
-        });
         getData(sheetId, "libraries").then((data) => {
             this.libraries = sheetTransformer(data.table.cols, data.table.rows);
-            setTimeout(() => {
-                $(document).ready(function () {
-                    $("[data-fancybox]").fancybox();
-                });
-                $('.animate-box').waypoint(function (direction) {
-                    var i = 0;
-                    if (direction === 'down' && !$(this.element).hasClass('animated')) {
-                        i++;
-                        $(this.element).addClass('item-animate');
-                        setTimeout(function () {
-                            $('body .animate-box.item-animate').each(function (k) {
-                                var el = $(this);
-                                setTimeout(function () {
-                                    var effect = el.data('animate-effect');
-                                    if (effect === 'fadeIn') {
-                                        el.addClass('fadeIn animated');
-                                    }
-                                    else if (effect === 'fadeInLeft') {
-                                        el.addClass('fadeInLeft animated');
-                                    }
-                                    else if (effect === 'fadeInRight') {
-                                        el.addClass('fadeInRight animated');
-                                    }
-                                    else {
-                                        el.addClass('fadeInUp animated');
-                                    }
-                                    el.removeClass('item-animate');
-                                }, k * 200, 'easeInOutExpo');
-                            });
-                        }, 100);
-                    }
-                }, {
-                    offset: '85%'
-                });
-                //geturl after vue load
-                let pathname = this.url;
-                const matchedLinks = $('.annie-main-menu a[href*="' + pathname + '"]');
-                matchedLinks.closest('li').addClass('active');
-                matchedLinks.closest('.annie-sub').addClass('open');
-                matchedLinks.closest('.annie-sub').find('ul').css('display', 'block');
-            }, 1000);
         }).catch((error) => {
             console.error("An error occurred:", error);
         });
@@ -124,15 +77,12 @@ new Vue({
                 }
             }
         },
-        //total Libraries
+        //total Libraries count
         totalLibraries() {
             return this.libraries.filter(data => data.galleryUrl === this.url).length;
         },
         filterGalleries() {
             return this.galleries.filter(data => data.url === this.url);
-        },
-        filterGalleryName() {
-            return this.filterGalleries()[0]?.name;
         },
         getUrl() {
             const patharr = window.location.pathname.split("/");
