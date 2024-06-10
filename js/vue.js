@@ -48,6 +48,9 @@ new Vue({
         //get data
         getData(sheetId, "slideshow").then((data) => {
             this.slideshow = sheetTransformer(data.table.cols, data.table.rows);
+            this.$nextTick(() => {
+                this.initializeOwlCarousel();
+            });
         }).catch((error) => {
             console.error("An error occurred:", error);
         });
@@ -69,17 +72,72 @@ new Vue({
             return "https://lh3.googleusercontent.com/d/" + link.split('/')[5] + "=w600";
         },
         //get Libraries
-        filterLibraries(limit) {
-            let filteredLibraries = this.libraries.filter(data => data.galleryUrl === this.url);
-            if (filteredLibraries.length > 0) {
-                if (limit > 0) {
-                    return filteredLibraries.slice(0, limit);
-                } else {
-                    limit = Math.abs(limit); // Convert to positive
-                    return filteredLibraries.slice(limit, filteredLibraries.length);
-                }
-            }
+        // filterLibraries(limit) {
+        //     let filteredLibraries = this.libraries.filter(data => data.galleryUrl === this.url);
+        //     if (filteredLibraries.length > 0) {
+        //         if (limit > 0) {
+        //             return filteredLibraries.slice(0, limit);
+        //         } else {
+        //             limit = Math.abs(limit); // Convert to positive
+        //             return filteredLibraries.slice(limit, filteredLibraries.length);
+        //         }
+        //     }
+        // },
+        getSlideshow() {
+            return this.slideshow;
         },
+
+        initializeOwlCarousel(){
+            // Slider owlCarousel - (Inner Page Slider)
+            $('.slider .owl-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                dots: true,
+                margin: 0,
+                autoplay: false,
+                autoplayTimeout: 5000,
+                nav: false,
+                navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        dots: true,
+                    },
+                    600: {
+                        dots: true,
+                    },
+                    1000: {
+                        dots: true,
+                    }
+                }
+            });
+            $('.slider-fade .owl-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                dots: true,
+                margin: 0,
+                autoplay: false,
+                autoplayTimeout: 5000,
+                animateOut: 'fadeOut',
+                nav: false,
+                navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>']
+            });
+            $('.header .owl-carousel').on('changed.owl.carousel', function (event) {
+                var item = event.item.index - 2; // Position of the current item
+                $('h6').removeClass('animated fadeInUp');
+                $('h1').removeClass('animated fadeInUp');
+                $('h5').removeClass('animated fadeInUp');
+                $('p').removeClass('animated fadeInUp');
+                $('.button-1').removeClass('animated fadeInUp');
+                $('.button-2').removeClass('animated fadeInUp');
+                $('.owl-item').not('.cloned').eq(item).find('h6').addClass('animated fadeInUp');
+                $('.owl-item').not('.cloned').eq(item).find('h1').addClass('animated fadeInUp');
+                $('.owl-item').not('.cloned').eq(item).find('h5').addClass('animated fadeInUp');
+                $('.owl-item').not('.cloned').eq(item).find('p').addClass('animated fadeInUp');
+                $('.owl-item').not('.cloned').eq(item).find('.button-1').addClass('animated fadeInUp');
+                $('.owl-item').not('.cloned').eq(item).find('.button-2').addClass('animated fadeInUp');
+            });
+        }
         //total Libraries
         // totalLibraries() {
         //     return this.libraries.filter(data => data.galleryUrl === this.url).length;
@@ -127,15 +185,15 @@ new Vue({
             return fetchPromise;
         }
     },
-    computed: {
-        filteredCustomers() {
-            return this.customers.filter(customer => {
-                const id = customer.id.toLowerCase();
-                const name = customer.name.toLowerCase();
-                const contactA = customer.contactA.toString().toLowerCase();
-                const searchTerm = this.filterCustomer.toLowerCase();
-                return (id.includes(searchTerm) || name.includes(searchTerm) || contactA.includes(searchTerm));
-            });
-        },
-    },
+    // computed: {
+    //     filteredCustomers() {
+    //         return this.customers.filter(customer => {
+    //             const id = customer.id.toLowerCase();
+    //             const name = customer.name.toLowerCase();
+    //             const contactA = customer.contactA.toString().toLowerCase();
+    //             const searchTerm = this.filterCustomer.toLowerCase();
+    //             return (id.includes(searchTerm) || name.includes(searchTerm) || contactA.includes(searchTerm));
+    //         });
+    //     },
+    // },
 });

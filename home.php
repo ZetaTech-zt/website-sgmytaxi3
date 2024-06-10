@@ -1,16 +1,16 @@
 <?php include 'header.php'; ?>
     <!-- Slider -->
     <header class="header slider-fade">
-        <div v-for="items in slideshow" class="owl-carousel owl-theme">
-            <div class="item bg-img" data-overlay-dark="5" data-background="img/alphard-bg.jpg">
+        <div class="owl-carousel owl-theme">
+            <div v-for="item in slideshow" class="item bg-img" data-overlay-dark="5" data-background="googleImageConvertToImage(item.photo)">
                 <div class="v-middle caption">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 mb-30">
                                 <div class="v-middle">
                                     <h6>* Premium</h6>
-                                    <h1 v-html="items.title"></h1>
-                                    <h5>starting at SGD 150 per way </h5> <a href="/fleet" class="button-1 mt-15 mb-15">VIEW DETAILS</a> <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" data-scroll-nav="1" class="button-2 mt-15 mb-15">BOOK NOW</a>
+                                    <h1>{{ item.title }}</h1>
+                                    <h5>{{ item.description }} </h5> <a href="/fleet" class="button-1 mt-15 mb-15">VIEW DETAILS</a> <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" data-scroll-nav="1" class="button-2 mt-15 mb-15">BOOK NOW</a>
                                 </div>
                             </div>
                         </div>
@@ -49,8 +49,8 @@
             </div> -->
         </div>
     </header>
-    <!-- <pre>{{ slideshow }}</pre> -->
     <!-- About -->
+
     <section class="about section-padding">
         <div class="container">
             <div class="row">
