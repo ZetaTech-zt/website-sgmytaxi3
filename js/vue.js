@@ -2,9 +2,9 @@
 new Vue({
     el: '#app',
     data: {
-        galleries: [],
-        libraries: [],
-        services: [],
+        slideshow: [],
+        // libraries: [],
+        // services: [],
         formData: {
             name: 'test',
             email: 'test@gmail.com',
@@ -14,14 +14,11 @@ new Vue({
         },
         isLoading: false,
         successfull: false,
-        url: ''
+        url: '',
     },
-    created() {
-        this.url = this.getUrl();
-    },
-    // start from here mounted
+    // start running initalize mounted
     mounted() {
-        const sheetId = '1AV7ShrNFFoXcVRRT8e_1HKSQcEQza9Ij9L88MADwlMo';
+        const sheetId = '1IV6qATVNvtuGErpCpLp97teKvbu1e1RHjTLcHY7y93w';
         const getData = async (sheetId, tabName) => {
             try {
                 const { data } = await axios.get(
@@ -49,16 +46,22 @@ new Vue({
             return response
         }
         //get data
-        getData(sheetId, "galleries").then((data) => {
-            this.galleries = sheetTransformer(data.table.cols, data.table.rows);
+        getData(sheetId, "slideshow").then((data) => {
+            this.slideshow = sheetTransformer(data.table.cols, data.table.rows);
         }).catch((error) => {
             console.error("An error occurred:", error);
         });
-        getData(sheetId, "libraries").then((data) => {
-            this.libraries = sheetTransformer(data.table.cols, data.table.rows);
-        }).catch((error) => {
-            console.error("An error occurred:", error);
-        });
+        //get data
+        // getData(sheetId, "services").then((data) => {
+        //     this.services = sheetTransformer(data.table.cols, data.table.rows);
+        // }).catch((error) => {
+        //     console.error("An error occurred:", error);
+        // });
+        // getData(sheetId, "libraries").then((data) => {
+        //     this.libraries = sheetTransformer(data.table.cols, data.table.rows);
+        // }).catch((error) => {
+        //     console.error("An error occurred:", error);
+        // });
     },
     methods: {
         //convert images
@@ -77,17 +80,17 @@ new Vue({
                 }
             }
         },
-        //total Libraries count
-        totalLibraries() {
-            return this.libraries.filter(data => data.galleryUrl === this.url).length;
-        },
-        filterGalleries() {
-            return this.galleries.filter(data => data.url === this.url);
-        },
-        getUrl() {
-            const patharr = window.location.pathname.split("/");
-            return patharr[patharr.length - 1];
-        },
+        //total Libraries
+        // totalLibraries() {
+        //     return this.libraries.filter(data => data.galleryUrl === this.url).length;
+        // },
+        // filterSlideshow() {
+        //     return this.slideshow.filter(data => data.url === 'Toyota Alphard');
+        // },
+        // filterGalleryName() {
+        //     return this.filterGalleries()[0]?.name;
+        // },
+        //sending googlesheet to gmail
         submitForm() {
             const bookingData = {
                 name: this.formData.name,
@@ -98,11 +101,7 @@ new Vue({
             };
             this.isLoading = true;
             console.log('Booking Data:', bookingData);
-            const fetchCode = 'AKfycbyGTMHfMp0SlqhkQFRGD-j4jzwkfWV6XHdCcerD5FDzodfDKhnMkhlKos_RvB3AZnpC';
-            setTimeout(() => {
-                this.isLoading = false;
-                this.successfull = true;
-            }, 2000);
+            const fetchCode = 'AKfycbzq1ouSOk9YviB3tYPGXczN8OOcHuGwaGB6iPI48zEYAK63i6-cpQZvmB0FbHDC1Rnd';
             this.fetchPostByType("sendEmail", fetchCode, bookingData);
         },
         fetchPostByType(type, url, data) {
