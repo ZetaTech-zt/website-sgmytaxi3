@@ -237,11 +237,18 @@ new Vue({
             const vm = this;
             setTimeout(() => {
                 $('.datepicker').datepicker({
-                    format: "mm/dd/yyyy",
                     orientation: "top"
                 }).on('change', function(event) {
                     const tempDate = $(this).val();
-                    vm.bookingData.pickup_date = tempDate;
+                    if ($(this).attr('name') === 'pickup_date') {
+                        vm.bookingData.pickup_date = tempDate;
+                    }else if ($(this).attr('name') === 'pickup_time') {
+                        vm.bookingData.pickup_time = tempDate;
+                    }else if ($(this).attr('name') === 'return_date') {
+                        vm.bookingData.return_date = tempDate;
+                    }else if ($(this).attr('name') === 'return_time') {
+                        vm.bookingData.return_time = tempDate;
+                    }
                 });
             }, 500);
         },
@@ -280,6 +287,7 @@ new Vue({
         handleTransferTypeChange() {
             // Update isTwoWay based on the selected transfer type
             this.isTwoWay = this.bookingData.transfer_type === 'two-way';
+            this.initializeDatepicker();
         },
         //sending googlesheet to gmail
         submitForm() {

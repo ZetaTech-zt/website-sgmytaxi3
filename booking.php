@@ -75,7 +75,7 @@
 
                     <div class="row">
                         <div class="col-lg-3 col-md-3">
-                            <label for="pickup_date" class="form-label">Pickup Date *{{bookingData.pickup_date}}</label>
+                            <label for="pickup_date" class="form-label">Pickup Date *</label>
                         </div>
                         <div class="col-lg-3 col-md-3">
                             <input v-model="bookingData.pickup_date" name="pickup_date" type="text" class="input datepicker" required />
@@ -84,7 +84,7 @@
                             <label for="pickup_time" class="form-label">Pickup Time *</label>
                         </div>
                         <div class="col-lg-3 col-md-3">
-                            <input v-model="bookingData.pickup_time" name="pickup_time" type="text" required />
+                            <input v-model="bookingData.pickup_time" name="pickup_time" class="input datepicker" type="text" required />
                         </div>
                     </div>
 
@@ -99,13 +99,13 @@
                             <label for="return_time" class="form-label">Return Time *</label>
                         </div>
                         <div class="col-lg-3 col-md-3">
-                            <input v-model="bookingData.return_time" name="return_time" type="text" required />
+                            <input v-model="bookingData.return_time" name="return_time" type="text" class="input datepicker" required />
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-3 col-md-3">
-                            <label for="pickup_location" class="form-label">Pickup Location *{{bookingData.pickup_location}}</label>
+                            <label for="pickup_location" class="form-label">Pickup Location *</label>
                         </div>
                         <div class="col-lg-9 col-md-9">
                             <input v-model="bookingData.pickup_location" name="pickup_location" type="text" required>
