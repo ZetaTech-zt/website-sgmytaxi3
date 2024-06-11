@@ -2,7 +2,7 @@
     <!-- Slider -->
     <header class="header slider-fade">
         <div class="owl-carousel owl-theme">
-            <div v-for="item in slideshow" class="item bg-img" data-overlay-dark="5" data-background="googleImageConvertToImage(item.photo)">
+            <div v-for="item in slideshow" class="item bg-img" data-overlay-dark="5" :data-background="googleImageConvertToImage(item.photo)">
                 <div class="v-middle caption">
                     <div class="container">
                         <div class="row">
@@ -10,7 +10,7 @@
                                 <div class="v-middle">
                                     <h6>* Premium</h6>
                                     <h1>{{ item.title }}</h1>
-                                    <h5>{{ item.description }} </h5> <a href="/fleet" class="button-1 mt-15 mb-15">VIEW DETAILS</a> <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" data-scroll-nav="1" class="button-2 mt-15 mb-15">BOOK NOW</a>
+                                    <h5>{{ item.description }} </h5> <a href="/fleet" class="button-1 mt-15 mb-15">VIEW DETAILS</a> <a href="/booking" class="button-2 mt-15 mb-15">BOOK NOW</a>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
     </section>
    
     <!-- Package -->
-    <section class="price section-padding">
+    <section  class="price section-padding">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center mb-30">
@@ -101,20 +101,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-12 mb-30">
+                <div v-for="(item, index) in limitedPricing" :key="index" class="col-lg-4 col-md-12 mb-30">
                     <div class="item">
-                        <h3>SENAI AIRPORT</h3>
+                        <h3>{{ item.title }}</h3>
                         <div class="cont">
                             <ul class="dot-list">
-                                <li>Toyota Innova : SGD 80</li>
-                                <li>Toyota Alphard : SGD 100</li>
-                                <li>Hyundai Starex : SGD 100</li>
+                                <li>{{ item.point1 }}</li>
+                                <li>{{ item.point2 }}</li>
+                                <li>{{ item.point3 }}</li>
                             </ul>
                             <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 mb-30">
+                <!-- <div class="col-lg-4 col-md-12 mb-30">
                     <div class="item">
                         <h3>KSL CITY MALL/TEBRAU JUSCO/BUKIT INDAH JUSCO</h3>
                         <div class="cont">
@@ -177,7 +177,7 @@
                             <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-md-12 text-center">
                 <a href="/pricing" class="button-1">READ MORE</a>
@@ -195,24 +195,24 @@
                 </div>
             </div>
             <div class="cars1-carousel owl-theme owl-carousel">
-                <div class="item">
-                    <div class="img"> <img src="img/innova.jpg" alt=""> </div>
+                <div v-for="item in fleet" class="item">
+                    <div class="img"> <img :src="googleImageConvertToImage(item.photo)" alt=""> </div>
                     <div class="con opacity-1">
                         <div class="row">
                             <div class="col-md-7">
-                                <div class="title"><a href="#">Toyota Innova</a></div>
-                                <div class="details"> <span><i class="omfi-passengers"></i> 7 Seats</span> <span><i class="omfi-luggage"></i> 3 Luggages</span> <span><i class="omfi-door"></i> 4 Doors</span> <span><i class="omfi-age"></i> 7 SRS Airbags</span> </div>
+                                <div class="title"><a href="#">{{ item.title }}</a></div>
+                                <div class="details"> <span><i class="omfi-passengers"></i> {{ item.seat }}</span> <span><i class="omfi-luggage"></i> {{ item.luggage }}</span> <span><i class="omfi-door"></i> {{ item.door }}</span> <span><i class="omfi-age"></i> {{ item.airbag }}</span> </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="book">
                                     <div><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a></div>
-                                    <div><span class="price">SGD80</span><span>/way</span></div>
+                                    <div><span class="price">{{ item.price }}</span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                     <div class="img"> <img src="img/alphard.jpg" alt=""> </div>
                     <div class="con opacity-1">
                         <div class="row">
@@ -245,7 +245,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

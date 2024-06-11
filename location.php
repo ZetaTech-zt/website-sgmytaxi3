@@ -4,25 +4,33 @@
     <!-- CONTENT -->
     <!-- About -->
     <section class="about section-padding">
-        <div class="container" style="padding-bottom: 60px;">
+        <div v-for="(item, index) in location" :key="index" class="container" style="padding-bottom: 60px;">
             <div class="row">
-                <div class="col-lg-6 col-md-12 mb-30">
+                <div v-if="index % 2 === 0" class="col-lg-6 col-md-12 mb-30">
                     <div class="content">
-                        <div class="section-title">SEKINCHAN</div>
-                        <p class="mb-30">
-                            Sekinchan is a charming fishing village and agricultural town known for its picturesque paddy fields and fresh seafood. 
-                            It offers a serene escape with stunning landscapes and a glimpse into traditional Malaysian rural life.
-                        </p>
+                        <div class="section-title">{{ item.title }}</div>
+                        <p class="mb-30">{{ item.description }}</p>
                         <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a>
                     </div>
                 </div>
-                <div class="col-lg-5 offset-lg-1 col-md-12">
-                    <img src="img/sekinchan.jpg" class="img-fluid" alt="">
+                <div v-if="index % 2 === 0" class="col-lg-5 offset-lg-1 col-md-12">
+                    <img :src="googleImageConvertToImage(item.photo)" class="img-fluid" alt="">
+                </div>
+
+                <div v-if="index % 2 === 1" class="col-lg-5 col-md-12 mb-30">
+                    <img :src="googleImageConvertToImage(item.photo)"  class="img-fluid" alt="">
+                </div>
+                <div v-if="index % 2 === 1" class="col-lg-6 offset-lg-1 col-md-12">
+                    <div class="content">
+                        <div class="section-title">{{ item.title }}</div>
+                        <p class="mb-30">{{ item.description }}</p>
+                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="container" style="padding-bottom: 60px;">
+        <!-- <div class="container" style="padding-bottom: 60px;">
             <div class="row">
                 <div class="col-lg-5 offset-lg-1 col-md-12">
                     <img src="img/mersing.jpg" class="img-fluid" alt="">
@@ -74,7 +82,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     
 <!-- FOOTER -->

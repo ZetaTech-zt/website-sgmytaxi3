@@ -3,6 +3,28 @@ new Vue({
     el: '#app',
     data: {
         slideshow: [],
+        location: [],
+        fleet: [],
+        pricing: [],
+        bookingData: {
+            name: '',
+            email: '',
+            phone: '',
+            car: '',
+            transfer_type: 'one-way',
+            pickup_date: '',
+            pickup_time: '',
+            return_date: '',
+            return_time: '',
+            pickup_location: '',
+            dropoff_location: '',
+            flight_info: '',
+            adults: '',
+            children: '',
+            request: ''
+        },
+        formSubmitted: false,
+        isTwoWay: false,
         // libraries: [],
         // services: [],
         formData: {
@@ -15,6 +37,9 @@ new Vue({
         isLoading: false,
         successfull: false,
         url: '',
+    },
+    created(){
+
     },
     // start running initalize mounted
     mounted() {
@@ -45,50 +70,19 @@ new Vue({
             }
             return response
         }
+        $('.datepicker').datepicker({
+            orientation: 'top'
+          }).on('changeDate', this.handleChangeDate);
+        
+          // Re-bind v-model and @change event
+          this.bindDatepickerEvents();
+
         //get data
         getData(sheetId, "slideshow").then((data) => {
             this.slideshow = sheetTransformer(data.table.cols, data.table.rows);
-            this.$nextTick(() => {
-                this.initializeOwlCarousel();
-            });
-        }).catch((error) => {
-            console.error("An error occurred:", error);
-        });
-        //get data
-        // getData(sheetId, "services").then((data) => {
-        //     this.services = sheetTransformer(data.table.cols, data.table.rows);
-        // }).catch((error) => {
-        //     console.error("An error occurred:", error);
-        // });
-        // getData(sheetId, "libraries").then((data) => {
-        //     this.libraries = sheetTransformer(data.table.cols, data.table.rows);
-        // }).catch((error) => {
-        //     console.error("An error occurred:", error);
-        // });
-    },
-    methods: {
-        //convert images
-        googleImageConvertToImage(link) {
-            return "https://lh3.googleusercontent.com/d/" + link.split('/')[5] + "=w600";
-        },
-        //get Libraries
-        // filterLibraries(limit) {
-        //     let filteredLibraries = this.libraries.filter(data => data.galleryUrl === this.url);
-        //     if (filteredLibraries.length > 0) {
-        //         if (limit > 0) {
-        //             return filteredLibraries.slice(0, limit);
-        //         } else {
-        //             limit = Math.abs(limit); // Convert to positive
-        //             return filteredLibraries.slice(limit, filteredLibraries.length);
-        //         }
-        //     }
-        // },
-        getSlideshow() {
-            return this.slideshow;
-        },
-
-        initializeOwlCarousel(){
-            // Slider owlCarousel - (Inner Page Slider)
+            
+            setTimeout(() => {
+                // Slider owlCarousel - (Inner Page Slider)
             $('.slider .owl-carousel').owlCarousel({
                 items: 1,
                 loop: true,
@@ -137,7 +131,121 @@ new Vue({
                 $('.owl-item').not('.cloned').eq(item).find('.button-1').addClass('animated fadeInUp');
                 $('.owl-item').not('.cloned').eq(item).find('.button-2').addClass('animated fadeInUp');
             });
-        }
+            var pageSection = $(".bg-img, section");
+            pageSection.each(function (indx) {
+                if ($(this).attr("data-background")) {
+                    $(this).css("background-image", "url(" + $(this).data("background") + ")");
+                }
+            });
+            }, 500);
+        }).catch((error) => {
+            console.error("An error occurred:", error);
+        });
+
+        getData(sheetId, "location").then((data) => {
+            this.location = sheetTransformer(data.table.cols, data.table.rows);
+        }).catch((error) => {
+            console.error("An error occurred:", error);
+        });
+
+        getData(sheetId, "fleet").then((data) => {
+            this.fleet = sheetTransformer(data.table.cols, data.table.rows);
+            setTimeout(() => {
+                $('.car-types1 .owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 20,
+                    mouseDrag: true,
+                    autoplay: false,
+                    autoplayTimeout: 5000,
+                    dots: true,
+                    nav: false,
+                    navText: ["<span class='lnr ti-angle-left'></span>", "<span class='lnr ti-angle-right'></span>"],
+                    autoplayHoverPause: true,
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                        },
+                        600: {
+                            items: 2
+                        },
+                        1000: {
+                            items: 3
+                        }
+                    }
+                });
+
+                $(".cars1-carousel").owlCarousel({
+                    loop: true,
+                    margin: 20,
+                    autoHeight: false,
+                    autoplayTimeout: 5000,
+                    dots: false,
+                    nav: true,
+                    navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            dots: false,
+                            items: 1,
+                        },
+                        600: {
+                            dots: false,
+                            items: 1,
+                        },
+                        1000: {
+                            dots: false,
+                            items: 1,
+                        }
+                    }
+                });
+            }, 500);
+        }).catch((error) => {
+            console.error("An error occurred:", error);
+        });
+
+        getData(sheetId, "pricing").then((data) => {
+            this.pricing = sheetTransformer(data.table.cols, data.table.rows);
+        }).catch((error) => {
+            console.error("An error occurred:", error);
+        });
+
+        //get data
+        // getData(sheetId, "services").then((data) => {
+        //     this.services = sheetTransformer(data.table.cols, data.table.rows);
+        // }).catch((error) => {
+        //     console.error("An error occurred:", error);
+        // });
+        // getData(sheetId, "libraries").then((data) => {
+        //     this.libraries = sheetTransformer(data.table.cols, data.table.rows);
+        // }).catch((error) => {
+        //     console.error("An error occurred:", error);
+        // });
+    },
+    methods: {
+        //convert images
+        googleImageConvertToImage(link) {
+            return "https://lh3.googleusercontent.com/d/" + link.split('/')[5] + "=w1200";
+        },
+        //get Libraries
+        // filterLibraries(limit) {
+        //     let filteredLibraries = this.libraries.filter(data => data.galleryUrl === this.url);
+        //     if (filteredLibraries.length > 0) {
+        //         if (limit > 0) {
+        //             return filteredLibraries.slice(0, limit);
+        //         } else {
+        //             limit = Math.abs(limit); // Convert to positive
+        //             return filteredLibraries.slice(limit, filteredLibraries.length);
+        //         }
+        //     }
+        // },
+        getSlideshow() {
+            return this.slideshow;
+        },
+        handleChangeDate(event) {
+            // Update selectedDate when date changes
+            this.bookingData.pickup_date = event.target.value;
+          },
         //total Libraries
         // totalLibraries() {
         //     return this.libraries.filter(data => data.galleryUrl === this.url).length;
@@ -148,9 +256,14 @@ new Vue({
         // filterGalleryName() {
         //     return this.filterGalleries()[0]?.name;
         // },
+        //sending booking data to google sheet
+        handleTransferTypeChange() {
+            // Update isTwoWay based on the selected transfer type
+            this.isTwoWay = this.bookingData.transfer_type === 'two-way';
+        },
         //sending googlesheet to gmail
         submitForm() {
-            const bookingData = {
+            const messageData = {
                 name: this.formData.name,
                 email: this.formData.email,
                 contact: this.formData.contact,
@@ -158,9 +271,9 @@ new Vue({
                 message: this.formData.message,
             };
             this.isLoading = true;
-            console.log('Booking Data:', bookingData);
+            console.log('Booking Data:', messageData);
             const fetchCode = 'AKfycbzq1ouSOk9YviB3tYPGXczN8OOcHuGwaGB6iPI48zEYAK63i6-cpQZvmB0FbHDC1Rnd';
-            this.fetchPostByType("sendEmail", fetchCode, bookingData);
+            this.fetchPostByType("sendEmail", fetchCode, messageData);
         },
         fetchPostByType(type, url, data) {
             // data type
@@ -185,6 +298,11 @@ new Vue({
             return fetchPromise;
         }
     },
+    computed: {
+        limitedPricing() {
+            return this.pricing.slice(0, 6);
+        }
+    }
     // computed: {
     //     filteredCustomers() {
     //         return this.customers.filter(customer => {

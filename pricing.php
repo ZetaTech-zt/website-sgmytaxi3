@@ -21,20 +21,20 @@
     <section class="price section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-12 mb-30">
+                <div v-for="item in pricing" class="col-lg-4 col-md-12 mb-30">
                     <div class="item">
-                        <h3>SENAI AIRPORT</h3>
+                        <h3>{{ item.title }}</h3>
                         <div class="cont">
                             <ul class="dot-list">
-                                <li>Toyota Innova : SGD 80</li>
-                                <li>Toyota Alphard : SGD 100</li>
-                                <li>Hyundai Starex : SGD 100</li>
+                                <li v-if="item.point1">{{ item.point1 }}</li>
+                                <li v-if="item.point2">{{ item.point2 }}</li>
+                                <li v-if="item.point3">{{ item.point3 }}</li>
                             </ul>
                             <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 mb-30">
+                <!-- <div class="col-lg-4 col-md-12 mb-30">
                     <div class="item">
                         <h3>KSL CITY MALL/TEBRAU JUSCO/BUKIT INDAH JUSCO</h3>
                         <div class="cont">
@@ -279,7 +279,7 @@
                             <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

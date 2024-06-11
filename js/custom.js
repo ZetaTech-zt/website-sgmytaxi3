@@ -81,56 +81,56 @@ $(function () {
     
     // Slider  
     $(document).ready(function () {
-        var owl = $('.header .owl-carousel');
-        // Slider owlCarousel - (Inner Page Slider)
-        $('.slider .owl-carousel').owlCarousel({
-            items: 1,
-            loop: true,
-            dots: true,
-            margin: 0,
-            autoplay: false,
-            autoplayTimeout: 5000,
-            nav: false,
-            navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
-            responsiveClass: true,
-            responsive: {
-                0: {
-                    dots: true,
-                },
-                600: {
-                    dots: true,
-                },
-                1000: {
-                    dots: true,
-                }
-            }
-        });
-        $('.slider-fade .owl-carousel').owlCarousel({
-            items: 1,
-            loop: true,
-            dots: true,
-            margin: 0,
-            autoplay: false,
-            autoplayTimeout: 5000,
-            animateOut: 'fadeOut',
-            nav: false,
-            navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>']
-        });
-        owl.on('changed.owl.carousel', function (event) {
-            var item = event.item.index - 2; // Position of the current item
-            $('h6').removeClass('animated fadeInUp');
-            $('h1').removeClass('animated fadeInUp');
-            $('h5').removeClass('animated fadeInUp');
-            $('p').removeClass('animated fadeInUp');
-            $('.button-1').removeClass('animated fadeInUp');
-            $('.button-2').removeClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('h6').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('h1').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('h5').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('p').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('.button-1').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('.button-2').addClass('animated fadeInUp');
-        });
+        // var owl = $('.header .owl-carousel');
+        // // Slider owlCarousel - (Inner Page Slider)
+        // $('.slider .owl-carousel').owlCarousel({
+        //     items: 1,
+        //     loop: true,
+        //     dots: true,
+        //     margin: 0,
+        //     autoplay: false,
+        //     autoplayTimeout: 5000,
+        //     nav: false,
+        //     navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
+        //     responsiveClass: true,
+        //     responsive: {
+        //         0: {
+        //             dots: true,
+        //         },
+        //         600: {
+        //             dots: true,
+        //         },
+        //         1000: {
+        //             dots: true,
+        //         }
+        //     }
+        // });
+        // $('.slider-fade .owl-carousel').owlCarousel({
+        //     items: 1,
+        //     loop: true,
+        //     dots: true,
+        //     margin: 0,
+        //     autoplay: false,
+        //     autoplayTimeout: 5000,
+        //     animateOut: 'fadeOut',
+        //     nav: false,
+        //     navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>']
+        // });
+        // owl.on('changed.owl.carousel', function (event) {
+        //     var item = event.item.index - 2; // Position of the current item
+        //     $('h6').removeClass('animated fadeInUp');
+        //     $('h1').removeClass('animated fadeInUp');
+        //     $('h5').removeClass('animated fadeInUp');
+        //     $('p').removeClass('animated fadeInUp');
+        //     $('.button-1').removeClass('animated fadeInUp');
+        //     $('.button-2').removeClass('animated fadeInUp');
+        //     $('.owl-item').not('.cloned').eq(item).find('h6').addClass('animated fadeInUp');
+        //     $('.owl-item').not('.cloned').eq(item).find('h1').addClass('animated fadeInUp');
+        //     $('.owl-item').not('.cloned').eq(item).find('h5').addClass('animated fadeInUp');
+        //     $('.owl-item').not('.cloned').eq(item).find('p').addClass('animated fadeInUp');
+        //     $('.owl-item').not('.cloned').eq(item).find('.button-1').addClass('animated fadeInUp');
+        //     $('.owl-item').not('.cloned').eq(item).find('.button-2').addClass('animated fadeInUp');
+        // });
     });
     
     
@@ -160,29 +160,29 @@ $(function () {
     });
     
     // Car Type 1 owlCarousel
-    $('.car-types1 .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 20,
-        mouseDrag: true,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        dots: true,
-        nav: false,
-        navText: ["<span class='lnr ti-angle-left'></span>", "<span class='lnr ti-angle-right'></span>"],
-        autoplayHoverPause: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    });
+    // $('.car-types1 .owl-carousel').owlCarousel({
+    //     loop: true,
+    //     margin: 20,
+    //     mouseDrag: true,
+    //     autoplay: false,
+    //     autoplayTimeout: 5000,
+    //     dots: true,
+    //     nav: false,
+    //     navText: ["<span class='lnr ti-angle-left'></span>", "<span class='lnr ti-angle-right'></span>"],
+    //     autoplayHoverPause: true,
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0: {
+    //             items: 1,
+    //         },
+    //         600: {
+    //             items: 2
+    //         },
+    //         1000: {
+    //             items: 3
+    //         }
+    //     }
+    // });
     
     // Car Type 2 Icon owlCarousel
     $('.car-types2 .owl-carousel').owlCarousel({
@@ -210,30 +210,30 @@ $(function () {
     });
     
     // Cars 1 owlCarousel
-    $(".cars1-carousel").owlCarousel({
-        loop: true,
-        margin: 20,
-        autoHeight: false,
-        autoplayTimeout: 5000,
-        dots: false,
-        nav: true,
-        navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                dots: false,
-                items: 1,
-            },
-            600: {
-                dots: false,
-                items: 1,
-            },
-            1000: {
-                dots: false,
-                items: 1,
-            }
-        }
-    });
+    // $(".cars1-carousel").owlCarousel({
+    //     loop: true,
+    //     margin: 20,
+    //     autoHeight: false,
+    //     autoplayTimeout: 5000,
+    //     dots: false,
+    //     nav: true,
+    //     navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0: {
+    //             dots: false,
+    //             items: 1,
+    //         },
+    //         600: {
+    //             dots: false,
+    //             items: 1,
+    //         },
+    //         1000: {
+    //             dots: false,
+    //             items: 1,
+    //         }
+    //     }
+    // });
     
     // Testimonials owlCarousel
     $('.testimonials .owl-carousel').owlCarousel({
@@ -415,10 +415,10 @@ $(function () {
     });
     
     // Datepicker
-    $(".datepicker").datepicker({
-        orientation: "top"
+    // $(".datepicker").datepicker({
+    //     orientation: "top"
         
-    });
+    // });
     
     // Scroll back to top
     var progressPath = document.querySelector('.progress-wrap path');

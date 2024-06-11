@@ -9,3 +9,4 @@ get('/location', 'location.php');
 get('/pricing', 'pricing.php');
 get('/fleet', 'fleet.php');
 get('/contact', 'contact.php');
+get('/booking', 'booking.php');

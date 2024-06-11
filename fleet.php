@@ -29,12 +29,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="owl-carousel">
-                        <div class="item"> <img src="img/innova.png" class="img-fluid mt-30" alt="">
+                        <div v-for="item in fleet" class="item"> <img :src="googleImageConvertToImage(item.photo)" class="img-fluid mt-30" alt="{{ item.title }}">
                             <div class="title">
-                                <h4>Toyota Innova</h4>
+                                <h4>{{ item.title }}</h4>
                             </div>
                         </div>
-                        <div class="item"> <img src="img/alphard.png" class="img-fluid mt-30" alt="">
+                        <!-- <div class="item"> <img src="img/alphard.png" class="img-fluid mt-30" alt="">
                             <div class="title">
                                 <h4>Toyota Alphard</h4>
                             </div>
@@ -43,7 +43,7 @@
                             <div class="title">
                                 <h4>Hyundai Starex</h4>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -52,27 +52,35 @@
 
     <!-- Cars -->
     <section class="cars1 section-padding">
-        <div class="container" style="padding-bottom: 60px;">
+        <div v-for="(item, index) in fleet" :key="index" class="container" style="padding-bottom: 60px;">
             <div class="row">
-                <div class="col-lg-6 col-md-12 mb-30">
+                <div v-if="index % 2 === 0" class="col-lg-6 col-md-12 mb-30">
                     <div class="content">
-                        <div class="section-title">Toyota Innova</div>
-                        <div class="section-subtitle">7 SEATER LUXURY CAR</div>
-                        <p class="mb-30">
-                            The Toyota Innova is a reliable and versatile MPV, ideal for both family trips and business travel. 
-                            With spacious interiors and flexible seating for up to 7 passengers, it ensures a comfortable and secure ride. 
-                            Advanced safety features and a fuel-efficient engine make it perfect for any journey.
-                        </p>
+                        <div class="section-title">{{ item.title }}</div>
+                        <div class="section-subtitle">{{ item.subtitle }}</div>
+                        <p class="mb-30">{{ item.description }}</p>
                         <div class="details h6"> <span class="me-3"><i class="omfi-passengers"></i> 7 Seats</span> <span class="me-3"><i class="omfi-luggage"></i> 3 Luggages</span> <span class="me-3"><i class="omfi-door"></i> 4 Doors</span> <span><i class="omfi-age"></i> 7 SRS Airbags</span> </div>
                     </div>
                 </div>
-                <div class="col-lg-5 offset-lg-1 col-md-12">
-                    <img src="img/innova.png" class="img-fluid" alt="">
+                <div v-if="index % 2 === 0" class="col-lg-5 offset-lg-1 col-md-12">
+                    <img :src="googleImageConvertToImage(item.photo)" class="img-fluid" alt="">
+                </div>
+
+                <div v-if="index % 2 === 1" class="col-lg-5 offset-lg-1 col-md-12">
+                    <img :src="googleImageConvertToImage(item.photo)" class="img-fluid" alt="">
+                </div>
+                <div v-if="index % 2 === 1" class="col-lg-6 col-md-12 mb-30">
+                    <div class="content">
+                        <div class="section-title">{{ item.title }}</div>
+                        <div class="section-subtitle">{{ item.subtitle }}</div>
+                        <p class="mb-30">{{ item.description }}</p>
+                        <div class="details h6"> <span class="me-3"><i class="omfi-passengers"></i> {{ item.seat }}</span> <span class="me-3"><i class="omfi-luggage"></i> {{ item.luggage }}</span> <span class="me-3"><i class="omfi-door"></i> {{ item.door }}</span> <span><i class="omfi-age"></i> {{ item.airbag }}</span> </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="container" style="padding-bottom: 60px;">
+        <!-- <div class="container" style="padding-bottom: 60px;">
             <div class="row">
                 <div class="col-lg-5 offset-lg-1 col-md-12">
                     <img src="img/alphard.png" class="img-fluid" alt="">
@@ -110,7 +118,7 @@
                     <img src="img/starex.png" class="img-fluid" alt="">
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     
 <!-- FOOTER -->
