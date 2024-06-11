@@ -70,12 +70,7 @@ new Vue({
             }
             return response
         }
-        $('.datepicker').datepicker({
-            orientation: 'top'
-          }).on('changeDate', this.handleChangeDate);
-        
-          // Re-bind v-model and @change event
-          this.bindDatepickerEvents();
+
 
         //get data
         getData(sheetId, "slideshow").then((data) => {
@@ -242,9 +237,14 @@ new Vue({
         getSlideshow() {
             return this.slideshow;
         },
-        handleChangeDate(event) {
-            // Update selectedDate when date changes
-            this.bookingData.pickup_date = event.target.value;
+          
+          
+          updatePickupDate(event) {
+            if (event && event.target) {
+              const currentValue = event.target.value;
+              console.log('Current input value:', currentValue);
+              this.bookingData.pickup_date = currentValue;
+            }
           },
         //total Libraries
         // totalLibraries() {
@@ -257,6 +257,27 @@ new Vue({
         //     return this.filterGalleries()[0]?.name;
         // },
         //sending booking data to google sheet
+        handleSubmit() {
+            this.formSubmitted = true;
+            const formData = this.bookingData;
+            const scriptUrl = 'https://docs.google.com/spreadsheets/d/1IV6qATVNvtuGErpCpLp97teKvbu1e1RHjTLcHY7y93w/edit?gid=138136646#gid=138136646'; // Replace with the URL from step 2
+        
+            fetch(scriptUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(formData)
+            }).then(response => {
+                console.log('Form data sent successfully:', response);
+                // Reset form fields or show success message as needed
+            }).catch(error => {
+                console.error('Error sending form data:', error);
+                // Handle error scenario
+            });
+        },
         handleTransferTypeChange() {
             // Update isTwoWay based on the selected transfer type
             this.isTwoWay = this.bookingData.transfer_type === 'two-way';
