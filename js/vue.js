@@ -38,9 +38,6 @@ new Vue({
         successfull: false,
         url: '',
     },
-    created(){
-
-    },
     // start running initalize mounted
     mounted() {
         const sheetId = '1IV6qATVNvtuGErpCpLp97teKvbu1e1RHjTLcHY7y93w';
@@ -70,8 +67,7 @@ new Vue({
             }
             return response
         }
-
-
+        this.initializeDatepicker();
         //get data
         getData(sheetId, "slideshow").then((data) => {
             this.slideshow = sheetTransformer(data.table.cols, data.table.rows);
@@ -237,15 +233,18 @@ new Vue({
         getSlideshow() {
             return this.slideshow;
         },
-          
-          
-          updatePickupDate(event) {
-            if (event && event.target) {
-              const currentValue = event.target.value;
-              console.log('Current input value:', currentValue);
-              this.bookingData.pickup_date = currentValue;
-            }
-          },
+        initializeDatepicker() {
+            const vm = this;
+            setTimeout(() => {
+                $('.datepicker').datepicker({
+                    format: "mm/dd/yyyy",
+                    orientation: "top"
+                }).on('change', function(event) {
+                    const tempDate = $(this).val();
+                    vm.bookingData.pickup_date = tempDate;
+                });
+            }, 500);
+        },
         //total Libraries
         // totalLibraries() {
         //     return this.libraries.filter(data => data.galleryUrl === this.url).length;

@@ -78,7 +78,7 @@
                             <label for="pickup_date" class="form-label">Pickup Date *{{bookingData.pickup_date}}</label>
                         </div>
                         <div class="col-lg-3 col-md-3">
-                            <input v-model.lazy="bookingData.pickup_date" name="pickup_date" type="text" class="input datepicker" required />
+                            <input v-model="bookingData.pickup_date" name="pickup_date" type="text" class="input datepicker" required />
                         </div>
                         <div class="col-lg-3 col-md-3">
                             <label for="pickup_time" class="form-label">Pickup Time *</label>
@@ -93,7 +93,7 @@
                             <label for="return_date" class="form-label">Return Date *</label>
                         </div>
                         <div class="col-lg-3 col-md-3">
-                            <input v-model="bookingData.return_date" @change="updatePickupDate" name="return_date" type="text" class="input datepicker" required />
+                            <input v-model="bookingData.return_date" name="return_date" type="text" class="input datepicker" required />
                         </div>
                         <div class="col-lg-3 col-md-3">
                             <label for="return_time" class="form-label">Return Time *</label>
