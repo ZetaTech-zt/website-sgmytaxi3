@@ -11,7 +11,7 @@ new Vue({
             email: '',
             phone: '',
             car: '',
-            transfer_type: 'one-way',
+            transfer_type: '',
             pickup_date: '',
             pickup_time: '',
             return_date: '',
@@ -242,13 +242,15 @@ new Vue({
                     const tempDate = $(this).val();
                     if ($(this).attr('name') === 'pickup_date') {
                         vm.bookingData.pickup_date = tempDate;
-                    }else if ($(this).attr('name') === 'pickup_time') {
-                        vm.bookingData.pickup_time = tempDate;
                     }else if ($(this).attr('name') === 'return_date') {
                         vm.bookingData.return_date = tempDate;
-                    }else if ($(this).attr('name') === 'return_time') {
-                        vm.bookingData.return_time = tempDate;
                     }
+                });
+                $('.select2').select2({
+                    minimumResultsForSearch: Infinity
+                }).on('change', function(event) {
+                    const tempcar = $(this).val();
+                    vm.bookingData.car = tempcar;
                 });
             }, 500);
         },
@@ -263,31 +265,34 @@ new Vue({
         //     return this.filterGalleries()[0]?.name;
         // },
         //sending booking data to google sheet
-        handleSubmit() {
-            this.formSubmitted = true;
-            const formData = this.bookingData;
-            const scriptUrl = 'https://docs.google.com/spreadsheets/d/1IV6qATVNvtuGErpCpLp97teKvbu1e1RHjTLcHY7y93w/edit?gid=138136646#gid=138136646'; // Replace with the URL from step 2
         
-            fetch(scriptUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                cache: 'no-cache',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams(formData)
-            }).then(response => {
-                console.log('Form data sent successfully:', response);
-                // Reset form fields or show success message as needed
-            }).catch(error => {
-                console.error('Error sending form data:', error);
-                // Handle error scenario
-            });
-        },
         handleTransferTypeChange() {
-            // Update isTwoWay based on the selected transfer type
+            
             this.isTwoWay = this.bookingData.transfer_type === 'two-way';
             this.initializeDatepicker();
+        },
+        handleSubmit(){
+            const bookingInfo = {
+                name: this.bookingData.name,
+                email: this.bookingData.email,
+                phone: this.bookingData.phone,
+                car: this.bookingData.car,
+                transfer_type: this.bookingData.transfer_type,
+                pickup_date: this.bookingData.pickup_date,
+                pickup_time: this.bookingData.pickup_time,
+                return_date: this.bookingData.return_date,
+                return_time: this.bookingData.return_time,
+                pickup_location: this.bookingData.pickup_location,
+                dropoff_location: this.bookingData.dropoff_location,
+                flight_info: this.bookingData.flight_info,
+                adults: this.bookingData.adults,
+                children: this.bookingData.children,
+                request: this.bookingData.request,
+            };
+            this.isLoading = true;
+            console.log('Booking Data:', bookingInfo);
+            const fetchCode = 'AKfycbzkMiBzaPNJjAHV5Cz66cyz_hN8Zg-vmaYM5wyyoybxPYbdAFi1rxTmybs0aVPumhf1';
+            this.fetchPostByType("sendEmail", fetchCode, bookingInfo);
         },
         //sending googlesheet to gmail
         submitForm() {
@@ -299,8 +304,8 @@ new Vue({
                 message: this.formData.message,
             };
             this.isLoading = true;
-            console.log('Booking Data:', messageData);
-            const fetchCode = 'AKfycbzq1ouSOk9YviB3tYPGXczN8OOcHuGwaGB6iPI48zEYAK63i6-cpQZvmB0FbHDC1Rnd';
+            console.log('Message Data:', messageData);
+            const fetchCode = 'AKfycby3d0mIw-XzGV--ylvqCT6-T5OOzJGQZL2-R8hSIZJTiP3V7HshCyD3fYKN8JjZnPCj';
             this.fetchPostByType("sendEmail", fetchCode, messageData);
         },
         fetchPostByType(type, url, data) {

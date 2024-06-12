@@ -4,6 +4,7 @@
     <!-- CONTENT -->
     <section class="about section-padding">
         <div class="container">
+            <h4 class="text-white">Booking Information</h4>
             <div class="row">
                 <div class="col-lg-12 col-md-12 mb-30">
                 <form method="post" @submit.prevent="handleSubmit">
@@ -43,15 +44,15 @@
 
                     <div class="row">
                         <div class="col-lg-3 col-md-3">
-                            <label for="car" class="form-label">Car *</label>
+                            <label for="car" class="form-label">Car *{{bookingData.car}}</label>
                         </div>
                         <div class="col-lg-9 col-md-9">
                             <div class="select1_wrapper">
-                                <select v-model="bookingData.car" name="car" class="select2 select" style="width: 100%">
+                                <select v-model="bookingData.car" name="car" class="select2 select" style="width: 100%" required>
                                     <option value="0">Choose A Car *</option>
-                                    <option value="1">Toyota Innova - 6 seat</option>
-                                    <option value="2">Toyota Alphard - 7 seat</option>
-                                    <option value="3">Hyundai Starex - 10 seat</option>
+                                    <option value="Toyota Innova - 6 seat">Toyota Innova - 6 seat</option>
+                                    <option value="oyota Alphard - 7 seat">Toyota Alphard - 7 seat</option>
+                                    <option value="Hyundai Starex - 10 seat">Hyundai Starex - 10 seat</option>
                                 </select>
                             </div>
                         </div>
@@ -63,11 +64,11 @@
                         </div>
                         <div class="col-lg-9 col-md-9">
                             <div style="display: inline-block; margin-right: 20px;">
-                                <input @change="handleTransferTypeChange" v-model="bookingData.transfer_type" name="transfer_type" type="radio" id="oneWay" value="one-way" checked />
+                                <input @change="handleTransferTypeChange" v-model="bookingData.transfer_type" name="transfer_type" type="radio" id="oneWay" value="one-way" checked required/>
                                 <label class="form-check-label ms-2" for="oneWay">ONE WAY TRANSFER</label>
                             </div>
                             <div style="display: inline-block; margin-right: 20px;">
-                                <input @change="handleTransferTypeChange" v-model="bookingData.transfer_type" name="transfer_type" type="radio" id="twoWay" value="two-way" />
+                                <input @change="handleTransferTypeChange" v-model="bookingData.transfer_type" name="transfer_type" type="radio" id="twoWay" value="two-way" required/>
                                 <label class="form-check-label ms-2" for="twoWay">TWO WAY TRANSFER</label>
                             </div>
                         </div>
@@ -84,7 +85,7 @@
                             <label for="pickup_time" class="form-label">Pickup Time *</label>
                         </div>
                         <div class="col-lg-3 col-md-3">
-                            <input v-model="bookingData.pickup_time" name="pickup_time" class="input datepicker" type="text" required />
+                            <input v-model="bookingData.pickup_time" name="pickup_time" type="text" required />
                         </div>
                     </div>
 
@@ -99,7 +100,7 @@
                             <label for="return_time" class="form-label">Return Time *</label>
                         </div>
                         <div class="col-lg-3 col-md-3">
-                            <input v-model="bookingData.return_time" name="return_time" type="text" class="input datepicker" required />
+                            <input v-model="bookingData.return_time" name="return_time" type="text" required />
                         </div>
                     </div>
 
@@ -144,7 +145,7 @@
                             <label for="children" class="form-label">Number Of Children</label>
                         </div>
                         <div class="col-lg-9 col-md-9">
-                            <input v-model="bookingData.children" name="children" type="text" required>
+                            <input v-model="bookingData.children" name="children" type="text">
                         </div>
                     </div>
 

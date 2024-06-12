@@ -410,9 +410,9 @@ $(function () {
     $("a.vid").YouTubePopUp();
     
     // Select2
-    $('.select2').select2({
-        minimumResultsForSearch: Infinity
-    });
+    // $('.select2').select2({
+    //     minimumResultsForSearch: Infinity
+    // });
     
     // Datepicker
     // $(".datepicker").datepicker({
