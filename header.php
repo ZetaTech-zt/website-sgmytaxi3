@@ -51,7 +51,8 @@
                     <li class="nav-item"><a class="nav-link" href="/location">Locations</a></li>
                     <li class="nav-item"><a class="nav-link" href="/fleet">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                    <li class="nav-item mr-15"><a class="nav-link" href="/contact">Contact</a></li>
+                    <li class="nav-item"><a href="/booking" class="button-1 px-4 py-2">BOOKING</a></li>
                 </ul>
             </div>
         </div>

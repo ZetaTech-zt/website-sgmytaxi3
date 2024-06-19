@@ -788,8 +788,6 @@ hr {
 }
 .nav-scroll .logo-img {
     width: 130px;
-}
-.nav-scroll .logo-img {
     margin-bottom: 0px;
 }
 .nav-scroll .logo-wrapper .logo h2 {
@@ -999,20 +997,20 @@ hr {
         padding-top: 0px;
         padding-bottom: 0px;
         height: 85px;
+        background: #222;
     }
     .nav-scroll {
         background: #222;
     }
     .logo-wrapper {
         float: left;
-        padding: 28.5px 15px;
+        padding: 2px 10px;
     }
     .nav-scroll .logo-wrapper {
-        padding: 28.5px 15px;
         background-color: transparent;
     }
     .nav-scroll .logo-img {
-        width: 130px;
+        width: 120px;
     }
     .navbar .logo {
         text-align: left;
@@ -1021,7 +1019,7 @@ hr {
     .nav-scroll .logo {}
     .logo-img {
         margin-bottom: 0px;
-        width: 130px;
+        width: 120px;
         padding: 0;
     }
     .navbar button {
@@ -5281,7 +5279,7 @@ height: 100% !important;
     background-color: #1b1b1b;
 }
 .footer-logo {
-    width: 130px;
+    width: 160px;
     margin-bottom: 15px;
 }
 .footer-logo h2 {

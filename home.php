@@ -17,36 +17,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="item bg-img" data-overlay-dark="5" data-background="img/starex-bg.jpg">
-                <div class="v-middle caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 mb-30">
-                                <div class="v-middle">
-                                    <h6>* Premium</h6>
-                                    <h1>MPV Limousine</h1>
-                                    <h5>Hyundai Starex </h5> <a href="/fleet" class="button-1 mt-15 mb-15">VIEW DETAILS</a> <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" data-scroll-nav="1" class="button-2 mt-15 mb-15">BOOK NOW</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item bg-img" data-overlay-dark="5" data-background="img/innova-bg.jpg">
-                <div class="v-middle caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 mb-30">
-                                <div class="v-middle">
-                                    <h6>* Premium</h6>
-                                    <h1>MPV Limousine</h1>
-                                    <h5>Toyota Innova </h5> <a href="/fleet" class="button-1 mt-15 mb-15">VIEW DETAILS</a> <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" data-scroll-nav="1" class="button-2 mt-15 mb-15">BOOK NOW</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </header>
     <!-- About -->
@@ -81,7 +51,7 @@
                                     <p>Private Transfer / Tourism Charter / Airport Transfer</p>
                                 </div>
                             </li>
-                        </ul> <a href="about.html" class="button-1">READ MORE</a>
+                        </ul> <a href="about" class="button-1">READ MORE</a>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-12">
