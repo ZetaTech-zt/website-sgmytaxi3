@@ -76,61 +76,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center mb-30">
-                    <div class="section-title">CHAUFFEUR <span>RATES</span></div>
+                    <div class="section-title">OUR <span>TRANSPORT RATES</span></div>
                 </div>
             </div>
             <div class="cars1-carousel owl-theme owl-carousel">
-                <div class="item">
-                    <div class="img"> <img src="img/innova.jpg" alt=""> </div>
+                <div v-for="item in fleet" class="item">
+                    <div class="img">
+                        <img :src="googleImageConvertToImage(item.photo)" alt="{{ item.title }}" class="bg-gray">
+                    </div>
                     <div class="con opacity-1">
                         <div class="row">
                             <div class="col-md-7">
-                                <div class="title"><a href="#">Toyota Innova</a></div>
-                                <div class="details"> <span><i class="omfi-passengers"></i> 7 Seats</span> <span><i class="omfi-luggage"></i> 3 Luggages</span> <span><i class="omfi-door"></i> 4 Doors</span> <span><i class="omfi-age"></i> 7 SRS Airbags</span> </div>
+                                <div class="title"><a href="#">{{ item.title }}</a></div>
+                                <div class="details"> <span><i class="omfi-passengers"></i> {{ item.seat }}</span> <span><i class="omfi-luggage"></i> {{ item.luggage }}</span> <span><i class="omfi-door"></i> {{ item.door }}</span> <span><i class="omfi-age"></i> {{ item.airbag }}</span> </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="book">
-                                    <div><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a></div>
-                                    <div><span class="price">SGD80</span><span>/way</span></div>
+                                    <div><a href="/booking" class="button-1 px-4 mt-20">BOOK NOW</a></div>
+                                    <div><span class="price">{{ item.price }}</span> <!--<span>/way</span>--></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="img"> <img src="img/alphard.jpg" alt=""> </div>
-                    <div class="con opacity-1">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="title"><a href="#">Toyota Alphard</a></div>
-                                <div class="details"> <span><i class="omfi-passengers"></i> 8 Seats</span> <span><i class="omfi-luggage"></i> 4 Luggages</span> <span><i class="omfi-door"></i> 4 Doors</span> <span><i class="omfi-age"></i> 7 SRS Airbags</span> </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="book">
-                                    <div><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a></div>
-                                    <div><span class="price">SGD100</span><span>/way</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img"> <img src="img/starex.jpg" alt=""> </div>
-                    <div class="con opacity-1">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="title"><a href="#">Hyundai Starex</a></div>
-                                <div class="details"> <span><i class="omfi-passengers"></i> 10 Seats</span> <span><i class="omfi-luggage"></i> 4 Luggages</span> <span><i class="omfi-door"></i> 4 Doors</span> <span><i class="omfi-age"></i> 4 SRS Airbags</span> </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="book">
-                                    <div><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a></div>
-                                    <div><span class="price">SGD100</span><span>/way</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>

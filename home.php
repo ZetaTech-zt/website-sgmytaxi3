@@ -80,74 +80,12 @@
                                 <li>{{ item.point2 }}</li>
                                 <li>{{ item.point3 }}</li>
                             </ul>
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
+                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" -->
+                            <a href="/booking" class="button-2 mt-30">BOOK NOW</a>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-4 col-md-12 mb-30">
-                    <div class="item">
-                        <h3>KSL CITY MALL/TEBRAU JUSCO/BUKIT INDAH JUSCO</h3>
-                        <div class="cont">
-                            <ul class="dot-list">
-                                <li>Toyota Innova : SGD 80</li>
-                                <li>Toyota Alphard : SGD 100</li>
-                                <li>Hyundai Starex : SGD 100</li>
-                            </ul>
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 mb-30">
-                    <div class="item">
-                        <h3>LEGOLAND JOHOR BAHRU</h3>
-                        <div class="cont">
-                            <ul class="dot-list">
-                                <li>Toyota Innova : SGD 80</li>
-                                <li>Toyota Alphard : SGD 100</li>
-                                <li>Hyundai Starex : SGD 100</li>
-                            </ul>
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 mb-30">
-                    <div class="item">
-                        <h3>JOHOR PREMIUM OUTLETS (JPO)</h3>
-                        <div class="cont">
-                            <ul class="dot-list">
-                                <li>Toyota Innova : SGD 80</li>
-                                <li>Toyota Alphard : SGD 100</li>
-                                <li>Hyundai Starex : SGD 100</li>
-                            </ul>
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 mb-30">
-                    <div class="item">
-                        <h3>SG-JB / SG-JB 1DAY TRIP</h3>
-                        <div class="cont">
-                            <ul class="dot-list">
-                                <li>HALF DAY TRIP : SGD 350</li>
-                                <li>FULL DAY TRIP : SGD 400</li>
-                            </ul>
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 mb-30">
-                    <div class="item">
-                        <h3>JOHOR BAHRU AREA</h3>
-                        <div class="cont">
-                            <ul class="dot-list">
-                                <li>Toyota Innova : SGD 80</li>
-                                <li>Toyota Alphard : SGD 100</li>
-                                <li>Hyundai Starex : SGD 100</li>
-                            </ul>
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-2 mt-30">BOOK NOW</a>
-                        </div>
-                    </div>
-                </div> -->
+                
             </div>
             <div class="col-md-12 text-center">
                 <a href="/pricing" class="button-1">READ MORE</a>
@@ -166,7 +104,9 @@
             </div>
             <div class="cars1-carousel owl-theme owl-carousel">
                 <div v-for="item in fleet" class="item">
-                    <div class="img"> <img :src="googleImageConvertToImage(item.photo)" alt=""> </div>
+                    <div class="img">
+                        <img :src="googleImageConvertToImage(item.photo)" alt="{{ item.title }}">
+                    </div>
                     <div class="con opacity-1">
                         <div class="row">
                             <div class="col-md-7">
@@ -175,47 +115,14 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="book">
-                                    <div><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a></div>
+                                    <div><a href="/booking" class="button-1 px-4 mt-20">BOOK NOW</a></div>
                                     <div><span class="price">{{ item.price }}</span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="item">
-                    <div class="img"> <img src="img/alphard.jpg" alt=""> </div>
-                    <div class="con opacity-1">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="title"><a href="#">Toyota Alphard</a></div>
-                                <div class="details"> <span><i class="omfi-passengers"></i> 8 Seats</span> <span><i class="omfi-luggage"></i> 4 Luggages</span> <span><i class="omfi-door"></i> 4 Doors</span> <span><i class="omfi-age"></i> 7 SRS Airbags</span> </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="book">
-                                    <div><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a></div>
-                                    <div><span class="price">SGD100</span><span>/way</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img"> <img src="img/starex.jpg" alt=""> </div>
-                    <div class="con opacity-1">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="title"><a href="#">Hyundai Starex</a></div>
-                                <div class="details"> <span><i class="omfi-passengers"></i> 10 Seats</span> <span><i class="omfi-luggage"></i> 4 Luggages</span> <span><i class="omfi-door"></i> 4 Doors</span> <span><i class="omfi-age"></i> 4 SRS Airbags</span> </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="book">
-                                    <div><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" href="#0" class="button-1 mt-30">BOOK NOW</a></div>
-                                    <div><span class="price">SGD100</span><span>/way</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                
             </div>
         </div>
     </section>
