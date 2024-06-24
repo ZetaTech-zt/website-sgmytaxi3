@@ -4174,6 +4174,8 @@ height: 100% !important;
     border-radius: 0;
     border: none;
     height: auto;
+    width: 100%;
+    min-height: 48px;
 }
 .selection {
     display: inline-flex;
@@ -4186,6 +4188,9 @@ height: 100% !important;
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     display: none;
+}
+.select2-container--default .selection{
+    width: 100%;
 }
 .select2-dropdown {
     background: none;
@@ -5276,7 +5281,7 @@ height: 100% !important;
 
 /* ======= Footer style ======= */
 .footer {
-    background-color: #1b1b1b;
+    background-color: #101010;
 }
 .footer-logo {
     width: 160px;

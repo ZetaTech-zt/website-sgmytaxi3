@@ -44,7 +44,7 @@
 
                     <div class="row">
                         <div class="col-lg-3 col-md-3">
-                            <label for="car" class="form-label">Car *{{bookingData.car}}</label>
+                            <label for="car" class="form-label">Car *</label>
                         </div>
                         <div class="col-lg-9 col-md-9">
                             <div class="select1_wrapper">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row py-2">
                         <div class="col-lg-3 col-md-3">
                             <label class="form-label">Transfer Type *</label>
                         </div>
