@@ -82,7 +82,7 @@
             <div class="cars1-carousel owl-theme owl-carousel">
                 <div v-for="item in fleet" class="item">
                     <div class="img">
-                        <img :src="googleImageConvertToImage(item.photo)" alt="{{ item.title }}" class="bg-gray">
+                        <img :src="googleImageConvertToImage(item.photo)" class="bg-gray">
                     </div>
                     <div class="con opacity-1">
                         <div class="row">
