@@ -39,8 +39,9 @@
                     <!-- quick info -->
                     <div class="col-md-3 offset-md-1 widget-area">
                         <div class="widget clearfix">
-                            <p><i class="icon omfi-phone"></i> 011-11989398</p>
-                            <p><i class="icon omfi-location"></i> 26, Jln Kempas Utama 2/5, Taman Kempas Utama, 81300 Johor Bahru, Johor</p>
+                            <p><i class="icon omfi-phone"></i> 010-8389366</p>
+                            <p><i class="icon omfi-envelope"></i> Kheng_liang1991@live.com</p>
+                            <p><i class="icon omfi-location"></i> No. 10-A Jalan Susur 1 Taman Seraya Kulai Besar KULAI, Johor, 81000 Malaysia</p>
                         </div>
                     </div>
 

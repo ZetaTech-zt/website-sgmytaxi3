@@ -28,9 +28,9 @@ new Vue({
         // libraries: [],
         // services: [],
         formData: {
-            name: 'test',
-            email: 'test@gmail.com',
-            contact: '0123',
+            name: 'Kheng Liang',
+            email: 'Kheng_liang1991@live.com',
+            contact: '010-8389366',
             subject: 'test',
             message: 'messages'
         },
